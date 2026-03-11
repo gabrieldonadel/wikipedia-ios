@@ -288,6 +288,9 @@ static NSString *const WMFSettingsURLDonation = @"https://donate.wikimedia.org/?
         case WMFSettingsMenuItemType_TemporaryAccount:
             [self showTemporaryAccount];
             break;
+        case WMFSettingsMenuItemType_ReactNative:
+            [self showReactNative];
+            break;
         default:
             break;
     }
@@ -523,6 +526,11 @@ static NSString *const WMFSettingsURLDonation = @"https://donate.wikimedia.org/?
     [self.navigationController pushViewController:storageAndSyncingSettingsVC animated:YES];
 }
 
+- (void)showReactNative {
+    UIViewController *rnVC = [ReactNativeHelper makeReactNativeViewController];
+    [self.navigationController pushViewController:rnVC animated:YES];
+}
+
 - (void)showDatabasePopulation {
 #if DEBUG
     [self tappedDatabasePopulation];
@@ -611,6 +619,7 @@ static NSString *const WMFSettingsURLDonation = @"https://donate.wikimedia.org/?
     [items addObject:[WMFSettingsMenuItem itemForType:WMFSettingsMenuItemType_DatabasePopulation]];
 #endif
     [items addObject:[WMFSettingsMenuItem itemForType:WMFSettingsMenuItemType_ClearCache]];
+    [items addObject:[WMFSettingsMenuItem itemForType:WMFSettingsMenuItemType_ReactNative]];
     WMFSettingsTableViewSection *section = [[WMFSettingsTableViewSection alloc] initWithItems:items headerTitle:nil footerText:nil];
     return section;
 }

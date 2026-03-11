@@ -1,6 +1,7 @@
 import UIKit
 import BackgroundTasks
 import CocoaLumberjackSwift
+import WikipediaBrownfield
 
 #if TEST
 // Avoids loading needless dependencies during unit tests
@@ -37,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         updateDynamicIconShortcutItems()
         registerBackgroundTasks()
+
+        ReactNativeHostManager.shared.initialize()
+
         return true
     }
     
